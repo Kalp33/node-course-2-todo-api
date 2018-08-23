@@ -1,5 +1,5 @@
 const expect = require('expect');
-const request = require('request');
+const request = require('supertest');
 
 var {app} = require('./../server');
 const {Todo} = require('./../models/todo');

@@ -26,6 +26,8 @@ app.listen(3040, () => {
    console.log('Started on port 3040');
 });
 
+module.exports = {app};
+
 
 
 

@@ -268,3 +268,59 @@ describe('GET /users/me', () => {
             .end(done);
     });
 });
+
+describe('POST /users/login', () => {
+    it('should login user and return auth token', (done) => {
+        var email = 'userOne@example.com';
+        var password = 'userOnePass';
+
+        var user = {email, password};
+
+        request(app)
+            .post('/users/login')
+            .send(user)
+            .expect(200)
+            .expect((res) => {
+                expect(res.headers['x-auth']).not.toBeNull();
+            })
+            .end((err, res) => {
+                if(err){
+                    return done(err);
+                }
+
+                User.findById(users[0]._id).then((user) => {
+                   expect(user.tokens[1].access).toEqual('auth');
+                   expect(user.tokens[1].token).toEqual(res.headers['x-auth']);
+                   done();
+                }).catch((e) => done(e));
+            });
+    });
+
+    it('should reject invalid login', (done) => {
+       var email = 'testUser@example.com';
+       var password = 'testPass';
+       var user = {
+           email,
+           password
+       };
+
+       request(app)
+           .post('/users/login')
+           .send(user)
+           .expect(400)
+           .expect((res) => {
+               expect(res.headers['x-auth']).toBeUndefined();
+               expect(res.body).toEqual({});
+           })
+           .end((err, res) => {
+               if (err) {
+                   return done(err);
+               }
+
+               User.findById(users[0]._id).then((user) => {
+                   expect(user.tokens.length).toBe(0);
+                   done();
+               }).catch((e) => done(e));
+           });
+    });
+});

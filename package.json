@@ -28,6 +28,7 @@
     "mongodb": "^2.2.5",
     "mongoose": "^5.2.9",
     "node-rsa": "^1.0.1",
+    "node-windows": "^0.1.14",
     "nodemon": "^1.18.3",
     "request": "^2.88.0",
     "rsa-pem-from-mod-exp": "^0.8.4",

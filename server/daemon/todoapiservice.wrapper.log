@@ -1,0 +1,2 @@
+2018-09-06 18:47:56 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\gs-1903\Documents\KKsDrive\NodeJS\node-todo-api\node_modules\node-windows\lib\wrapper.js --file C:\Users\gs-1903\Documents\KKsDrive\NodeJS\node-todo-api\server\server.js --log "Todo API Service wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2018-09-06 18:47:56 - Started 7876
